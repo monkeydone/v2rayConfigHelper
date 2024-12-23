@@ -9,4 +9,24 @@
 > python update_proxy.py --name
 
 ## 指定vmess节点列表,生成配置文件
-> python update_proxy.py 订阅地址 --ps "01-中转-2x-流媒体全解锁" "02-中转-2X-流媒体全解锁"
+> python update_proxy.py 订阅地址 --ps "01-中转-2x-流媒体全解锁" "02-中转-2X-流媒体全解锁" --config_name /tmp/c.json
+
+## 测试配置文件是否正确
+> v2ray test --config /tmp/c.json
+
+## 启用配置文件进行测试
+```
+
+    sudo cp  /tmp/c.json /usr/local/etc/v2ray/config.json
+    sudo systemctl restart v2ray
+    echo "Restarted V2Ray service."
+
+    sleep 1
+
+
+    export http_proxy=http://192.168.1.30:10809
+    export https_proxy=http://192.168.1.30:10809
+ 
+    # 测试连接
+    curl https://www.google.com
+```
