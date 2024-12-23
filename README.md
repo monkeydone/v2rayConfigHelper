@@ -1,0 +1,2 @@
+# v2rayConfigHelper
+根据定于地址生成一个v2ray的配置
